@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Studio45_Productmargin>
+            <version>0.1.0</version>
+        </Studio45_Productmargin>
+    </modules>
+    <frontend>
+        <routers>
+            <productmargin>
+                <use>standard</use>
+                <args>
+                    <module>Studio45_Productmargin</module>
+                    <frontName>productmargin</frontName>
+                </args>
+            </productmargin>
+        </routers>
+        <events>
+            <page_block_html_topmenu_gethtml_before>
+                <observers>
+                    <productmargin>
+                        <class>productmargin/observer</class>
+                        <method>addToTopmenu</method>
+                    </productmargin>
+                </observers>
+            </page_block_html_topmenu_gethtml_before>
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+			<productmargin>
+				<use>admin</use>
+				<args>
+					<module>Studio45_Productmargin</module>
+					<frontName>productmargin</frontName>
+				</args>
+			</productmargin>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<productmargin module="productmargin">
+				<depends>
+                    <config>productmargin_section/general/active</config>
+                </depends>
+                <title>Product Margin</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="productmargin">
+						<title>Manage Product Margin</title>
+						<sort_order>0</sort_order>
+						<action>productmargin/adminhtml_productmargin</action>
+					</items>
+					<items2 module="productmargin">
+						<title>Add Product Margin</title>
+						<sort_order>1</sort_order>
+						<action>productmargin/adminhtml_productmargin/new</action>
+					</items2>
+                </children>
+			</productmargin>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+                        <productmargin module="productmargin">
+							<title>Studio45</title>
+							<sort_order>71</sort_order>               
+							<children>
+								<items module="productmargin">
+									<title>Manage Forms</title>
+									<sort_order>0</sort_order>
+									<action>productmargin/adminhtml_productmargin</action>
+								</items>
+								<items2 module="productmargin">
+									<title>Add Form</title>
+									<sort_order>1</sort_order>
+									<action>productmargin/adminhtml_productmargin/new</action>
+								</items2>
+                                <items3 module="productmargin">
+                                    <title>productmargin Settings</title>
+                                    <sort_order>2</sort_order>
+                                    <action>adminhtml/system_config/edit/section/productmargin_section</action>
+                                </items3>
+							</children>
+						</productmargin>
+						<system>
+							<children>
+								<config>
+									<children>
+										<productmargin_section translate="title" module="productmargin">
+											<title>Studio45 Productmargin Section</title>
+										</productmargin_section>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<productmargin>
+					<file>productmargin.xml</file>
+				</productmargin>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <productmargin>
+                <class>Studio45_Productmargin_Model</class>
+                <resourceModel>productmargin_mysql4</resourceModel>
+            </productmargin>
+            <productmargin_mysql4>
+                <class>Studio45_Productmargin_Model_Mysql4</class>
+                <entities>
+                    <forms>
+                        <table>productmargin_forms</table>
+                    </forms>
+                </entities>
+            </productmargin_mysql4>
+        </models>
+        <resources>
+            <productmargin_setup>
+                <setup>
+                    <module>Studio45_Productmargin</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </productmargin_setup>
+            <productmargin_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </productmargin_write>
+            <productmargin_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </productmargin_read>
+        </resources>
+        <blocks>
+            <productmargin>
+                <class>Studio45_Productmargin_Block</class>
+            </productmargin>
+        </blocks>
+        <helpers>
+            <productmargin>
+                <class>Studio45_Productmargin_Helper</class>
+            </productmargin>
+        </helpers>
+    </global>
+	<default>
+		<productmargin_section>
+			<general>
+				<active>1</active>
+			</general>
+		</productmargin_section>
+	 </default>
+</config>

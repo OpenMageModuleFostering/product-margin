@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout version="0.3.1">
+	
+    <productmargin_adminhtml_productmargin_index>
+		<update handle="editor_index_index"/>
+        <reference name="content">
+            <block type="productmargin/adminhtml_productmargin" name="productmargin" />
+        </reference>
+    </productmargin_adminhtml_productmargin_index>
+    <productmargin_adminhtml_productmargin_options>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="productmargin/adminhtml_productmargin_edit_tab_options" name="admin.product.options"/>
+        </block>
+    </productmargin_adminhtml_productmargin_options>
+</layout>

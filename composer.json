@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Product-Margin",
+    "type": "magento-module",
+    "license": "OSL-v3.0",
+    "homepage": "",
+    "description": "A perfect comparison rate calculator that helps compares pricing of different products in an organised and meaningful way. ",
+    "authors": [
+    {
+        "name": "SEO North Melbourne",
+        "email": "info@seonorthmelbourne.com.au"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
